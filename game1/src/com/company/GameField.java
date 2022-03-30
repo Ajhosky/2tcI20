@@ -70,7 +70,7 @@ public class GameField extends JPanel {
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
                     if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()] > 0) {
-                    player.attack(players[CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH)][player.getY()]-1]);
+                    player.attack(players[CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()]-1]);
                    }
                     new java.util.Timer().schedule(
                             new java.util.TimerTask() {
