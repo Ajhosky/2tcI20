@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.classes.CharacterClass;
 import com.company.classes.arenas.Syberia;
+import com.company.classes.characters.Constans;
 
 public class Team {
     private CharacterClass[] teamMembers;
@@ -34,6 +35,6 @@ public class Team {
     }
 
     public void runArena() {
-        MainWindow mw = new MainWindow(375, 438, this);
+        MainWindow mw = new MainWindow(Constans.WINDOW_WIDTH, Constans.WINDOW_HEIGHT, this);
     }
 }
