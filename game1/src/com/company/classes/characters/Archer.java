@@ -27,7 +27,7 @@ public class Archer  extends CharacterClass {
     }
 
     public void left() {
-        int newPositionX = this.getX() > 40 ?  this.getX() - 40 : 320;
+        int newPositionX = this.getX() >= 40 ?  this.getX() - 40 : 320;
         tryChangePosition(newPositionX, this.getY());
     }
     public void right() {

@@ -24,7 +24,7 @@ public class Mage  extends CharacterClass {
         this.uploadImage("1.png", "2.png", "3.png");*/
     }
     public void left() {
-        int newPositionX = this.getX() > 40 ?  this.getX() - 40 : 320;
+        int newPositionX = this.getX() >= 40 ?  this.getX() - 40 : 320;
         tryChangePosition(newPositionX, this.getY());
     }
     public void right() {
