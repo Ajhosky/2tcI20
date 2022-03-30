@@ -21,7 +21,7 @@ public class Archer  extends CharacterClass {
 
         /*this.setX(300);
         this.setY(300);*/
-        this.uploadImage("5.png", "6.png", "7.png");
+        this.uploadImage("5.png", "7.png", "6.png");
 
 
     }
