@@ -66,8 +66,25 @@ public class GameField extends JPanel {
                             }, 200
                     );
                 }
+                if (key == player.getLeftAttackKey()) {
+                    player.setAttackLeftImage();
+                    if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - 40][player.getY()] > 0) {
+                    player.attack(players[CharacterClass.occupiedCells[player.getX() - 40][player.getY()]-1]);
+                   }
+                    new java.util.Timer().schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    player.setBaseImage();
+                                    repaint();
+                                }
+                            }, 200
+                    );
+                }
+
                 if (key == player.getRightAttackKey()) {
                     player.setAttackRightImage();
+
 
                     if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + 40][player.getY()] > 0) {
                         player.attack(players[CharacterClass.occupiedCells[player.getX() + 40][player.getY()]-1]);
