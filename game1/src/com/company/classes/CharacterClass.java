@@ -23,6 +23,7 @@ public abstract class CharacterClass implements BaseClass {
     private int leftKey, rightKey, upKey, downKey, leftAttackKey,rightAttackKey;
     protected  String className;
 
+
     public CharacterClass(
             String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         this.number = ++playerCount;
@@ -124,7 +125,7 @@ public abstract class CharacterClass implements BaseClass {
 
     public void checkGameOver(CharacterClass player){
         if (player.getHealthPoints() <= 0){
-            System.out.println("game oveer");
+            player.setGameOverImage();
         }
     }
     public void attack(CharacterClass attackedPlayer) {
@@ -162,12 +163,9 @@ public abstract class CharacterClass implements BaseClass {
         System.out.println("Name: " + this.name + "\nCurrentHP: " + this.healthPoints + "\nCurrentmana: " + this.maxManaPoints + "\nLevel: " + this.level);
     }
 
-    private Image image, baseImage, attackLeftImage, attackRightImage;
+    private Image image, baseImage, attackLeftImage, attackRightImage, gameOverImage;
     private int x, y;
 
-    public void setImage(Image image) {
-        this.image = image;
-    }
 
     public void setX(int x) {
         this.x = x;
@@ -189,17 +187,20 @@ public abstract class CharacterClass implements BaseClass {
         return y;
     }
 
-    public void uploadImage(String baseImage, String attackLeftImage, String attackRightImage) {
+    public void uploadImage(String baseImage, String attackLeftImage, String attackRightImage, String gameOverImage) {
         this.baseImage = new ImageIcon(baseImage).getImage();
         this.attackLeftImage = new ImageIcon(attackLeftImage).getImage();
         this.attackRightImage = new ImageIcon(attackRightImage).getImage();
+        this.gameOverImage = new ImageIcon(gameOverImage).getImage();
         setBaseImage();
     }
 
     public void setBaseImage() {
         this.image = this.baseImage;
     }
-
+    public void setGameOverImage(){
+        this.image = this.gameOverImage;
+    }
     public void setAttackLeftImage() {
         this.image = this.attackLeftImage;
     }
