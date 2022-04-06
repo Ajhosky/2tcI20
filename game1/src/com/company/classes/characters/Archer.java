@@ -10,6 +10,7 @@ public class Archer  extends CharacterClass {
         this.setMaxHealthPoints(1000);
         setHealthPoints(500);
         this.className = "Archer";
+        this.setAttackDistance(2 * Constans.CHARACTER_WIDTH);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);

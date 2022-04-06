@@ -5,7 +5,7 @@ import com.company.classes.arenas.Syberia;
 import com.company.classes.characters.Constans;
 
 public class Team {
-    private CharacterClass[] teamMembers;
+    protected CharacterClass[] teamMembers;
 
     public void setArena(Syberia arena) {
         this.arena = arena;
@@ -34,7 +34,12 @@ public class Team {
         return arena1.open(this);
     }
 
+    public void setTeamMembers(CharacterClass[] teamMembers) {
+        this.teamMembers = teamMembers;
+    }
+
     public void runArena() {
         MainWindow mw = new MainWindow(Constans.WINDOW_WIDTH, Constans.WINDOW_HEIGHT, this);
     }
 }
+

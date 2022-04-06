@@ -7,8 +7,9 @@ public class Warrior extends CharacterClass {
    public Warrior(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
         this.setAttackAmount(100);
-       this.setMaxHealthPoints(1000);
+        this.setMaxHealthPoints(1000);
         setHealthPoints(1000);
+        this.setAttackDistance(Constans.CHARACTER_WIDTH);
         this.className = "Warior";
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);

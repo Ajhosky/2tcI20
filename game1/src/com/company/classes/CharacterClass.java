@@ -1,5 +1,9 @@
 package com.company.classes;
 
+import com.company.GameField;
+import com.company.Team;
+import com.company.classes.characters.Warrior;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,6 +16,7 @@ public abstract class CharacterClass implements BaseClass {
     private int level;
     private AttackType attackType;
     private int attackAmount;
+    private int attackDistance;
     private String name;
     private int maxHealthPoints;
     private int maxManaPoints;
@@ -117,7 +122,11 @@ public abstract class CharacterClass implements BaseClass {
         return maxManaPoints;
     }
 
-
+    public void checkGameOver(CharacterClass player){
+        if (player.getHealthPoints() <= 0){
+            System.out.println("game oveer");
+        }
+    }
     public void attack(CharacterClass attackedPlayer) {
         attackedPlayer.reduceHealth(this.attackAmount);
         System.out.println(this.className + " attacked " + attackedPlayer.className + " for " + this.attackAmount);
@@ -236,6 +245,7 @@ public abstract class CharacterClass implements BaseClass {
 
     protected void reduceHealth(int amount) {
         setHealthPoints(this.getHealthPoints() - amount);
+        checkGameOver(this);
     }
 
     public abstract void left();
@@ -245,4 +255,13 @@ public abstract class CharacterClass implements BaseClass {
     public abstract void up();
 
     public abstract void down();
+
+    public int getAttackDistance() {
+        return attackDistance;
+    }
+
+    public void setAttackDistance(int attackDistance) {
+        this.attackDistance = attackDistance;
+    }
 }
+
