@@ -246,7 +246,7 @@ public abstract class CharacterClass implements BaseClass {
 
     protected void reduceHealth(int amount) {
         setHealthPoints(this.getHealthPoints() - amount);
-        checkGameOver(this);
+        //GameField.gameOverSign(this);
     }
 
     public abstract void left();
