@@ -9,30 +9,25 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GameField extends JPanel {
+    protected Integer steps;
     private Team team;
-    private String deadPlayer;
     private CharacterClass[] players;
     private  JLabel gameOver = new JLabel("Game over");
-    private  JLabel loser = new JLabel("\nloser: " + deadPlayer);
     public GameField(Team team) {
         this.team = team;
         this.players = team.getTeamMembers();
         setFocusable(true);
         addKeyListener(new FieldKeyListener());
         gameOver.setVisible(false);
-        loser.setVisible(false);
         add(gameOver);
-        add(new  JLabel("\n"));
-        add(loser);
+
 
 
 
     }
     public void gameOverSign(CharacterClass player) {
         if (player.getHealthPoints() <= 0) {
-            deadPlayer = player.getName();
             gameOver.setVisible(true);
-            loser.setVisible(true);
         }
     }
     @Override
@@ -43,9 +38,8 @@ public class GameField extends JPanel {
             gameOverSign(player);
             g.drawImage(player.getImage(), player.getX(), player.getY(), this);
             g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
-            g.drawString("steps", player.getX(), player.getY() + 26);
+            g.drawString("steps " + player.getSteps(), player.getX(), player.getY() + 24);
             System.out.println("health points =   " + player.getHealthPoints());
-
         }
     }
 
@@ -58,24 +52,31 @@ public class GameField extends JPanel {
 
             int key = e.getKeyCode();
             for (CharacterClass player : players) {
+
                 if (key == player.getLeftKey()) {
                     //player.setX(player.getX() - 40);
                     player.left();
+                    player.setSteps(player.getSteps() - 1);
                 }
                 if (key == player.getRightKey()) {
                     //player.setX(player.getX() + 40);
                     player.right();
+                    player.setSteps(player.getSteps() - 1);
                 }
                 if (key == player.getUpKey()) {
                     //player.setY(player.getY() - 40);
                     player.up();
+                    player.setSteps(player.getSteps() - 1);
                 }
                 if (key == player.getDownKey()) {
                     //player.setY(player.getY() + 40);
                     player.down();
+                    player.setSteps(player.getSteps() - 1);
+
                 }
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
+                    player.setSteps(player.getSteps() - 1);
 
                     //timer
                     new java.util.Timer().schedule(
@@ -90,6 +91,7 @@ public class GameField extends JPanel {
                 }
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
+                    player.setSteps(player.getSteps() - 1);
                     if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()] > 0) {
                     player.attack(players[CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()]-1]);
                    }
@@ -105,6 +107,7 @@ public class GameField extends JPanel {
                 }
 
                 if (key == player.getRightAttackKey()) {
+                    player.setSteps(player.getSteps() - 1);
                     player.setAttackRightImage();
 
 

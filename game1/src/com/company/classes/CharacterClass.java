@@ -22,7 +22,7 @@ public abstract class CharacterClass implements BaseClass {
     private int maxManaPoints;
     private int leftKey, rightKey, upKey, downKey, leftAttackKey,rightAttackKey;
     protected  String className;
-
+    private int steps;
 
     public CharacterClass(
             String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
@@ -121,6 +121,14 @@ public abstract class CharacterClass implements BaseClass {
 
     public int getMaxManaPoints() {
         return maxManaPoints;
+    }
+
+    public int getSteps() {
+        return steps;
+    }
+
+    public void setSteps(int steps) {
+        this.steps = steps;
     }
 
     public void checkGameOver(CharacterClass player){

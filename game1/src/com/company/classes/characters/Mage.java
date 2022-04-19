@@ -11,6 +11,7 @@ public class Mage  extends CharacterClass {
         setHealthPoints(500);
         this.className = "Mage";
         this.setAttackDistance(2 * Constans.CHARACTER_WIDTH);
+        this.setSteps(Constans.STEPS);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);

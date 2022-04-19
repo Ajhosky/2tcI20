@@ -11,6 +11,7 @@ public class Warrior extends CharacterClass {
         setHealthPoints(1000);
         this.setAttackDistance(Constans.CHARACTER_WIDTH);
         this.className = "Warior";
+        this.setSteps(Constans.STEPS);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);

@@ -9,6 +9,7 @@ public class Healer  extends CharacterClass {
         this.setAttackAmount(50);
         setHealthPoints(500);
         this.className = "Healer";
+        this.setSteps(Constans.STEPS);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);
