@@ -130,8 +130,14 @@ public abstract class CharacterClass implements BaseClass {
     public void setSteps(int steps) {
         this.steps = steps;
     }
+    public void checkSteps(CharacterClass player){
+        player.setSteps(player.getSteps() - 1);
+        if (player.getSteps() == 0 ){
+            player.setSteps(3);
+        }
+    }
 
-    public void checkGameOver(CharacterClass player){
+  public void checkGameOver(CharacterClass player){
         if (player.getHealthPoints() <= 0){
             player.setGameOverImage();
         }

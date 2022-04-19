@@ -24,10 +24,13 @@ public class GameField extends JPanel {
 
 
 
+
     }
     public void gameOverSign(CharacterClass player) {
         if (player.getHealthPoints() <= 0) {
             gameOver.setVisible(true);
+
+
         }
     }
     @Override
@@ -39,7 +42,7 @@ public class GameField extends JPanel {
             g.drawImage(player.getImage(), player.getX(), player.getY(), this);
             g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
             g.drawString("steps " + player.getSteps(), player.getX(), player.getY() + 24);
-            System.out.println("health points =   " + player.getHealthPoints());
+            System.out.println("health points = " + player.getHealthPoints());
         }
     }
 
@@ -56,12 +59,14 @@ public class GameField extends JPanel {
                 if (key == player.getLeftKey()) {
                     //player.setX(player.getX() - 40);
                     player.left();
-                    player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(player);
+                   // player.setSteps(player.getSteps() - 1);
                 }
                 if (key == player.getRightKey()) {
                     //player.setX(player.getX() + 40);
                     player.right();
-                    player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(player);
+                    //player.setSteps(player.getSteps() - 1);
                 }
                 if (key == player.getUpKey()) {
                     //player.setY(player.getY() - 40);
