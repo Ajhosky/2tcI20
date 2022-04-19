@@ -1,8 +1,6 @@
 package com.company.classes;
 
-import com.company.GameField;
 import com.company.Team;
-import com.company.classes.characters.Warrior;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +21,7 @@ public abstract class CharacterClass implements BaseClass {
     private int leftKey, rightKey, upKey, downKey, leftAttackKey,rightAttackKey;
     protected  String className;
     private int steps;
+    private Team team;
 
     public CharacterClass(
             String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
@@ -37,6 +36,7 @@ public abstract class CharacterClass implements BaseClass {
         this.downKey = downKey;
         this.leftAttackKey = leftAttackKey;
         this.rightAttackKey = rightAttackKey;
+
     }
 
     public void setHealthPoints(int healthPoints) {
@@ -130,10 +130,14 @@ public abstract class CharacterClass implements BaseClass {
     public void setSteps(int steps) {
         this.steps = steps;
     }
-    public void checkSteps(CharacterClass player){
-        player.setSteps(player.getSteps() - 1);
-        if (player.getSteps() == 0 ){
-            player.setSteps(3);
+    public void checkSteps(CharacterClass player1, CharacterClass player2){
+        player1.setSteps(player1.getSteps() - 1);
+        if (player2.getSteps() == 0 ){
+            player1.setSteps(3);
+        }
+        player2.setSteps(player2.getSteps() - 1);
+        if (player1.getSteps() == 0 ){
+            player2.setSteps(3);
         }
     }
 

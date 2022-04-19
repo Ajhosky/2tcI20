@@ -7,11 +7,12 @@ public class Archer  extends CharacterClass {
     public Archer(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
         this.setAttackAmount(50);
+        this.setAttackDistance(2 * Constans.CHARACTER_WIDTH);
         this.setMaxHealthPoints(1000);
         setHealthPoints(500);
         this.className = "Archer";
-        this.setAttackDistance(2 * Constans.CHARACTER_WIDTH);
         this.setSteps(Constans.STEPS);
+        this.setAttackType(AttackType.PHYSICAL_RANGED);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);

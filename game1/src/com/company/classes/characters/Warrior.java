@@ -1,6 +1,7 @@
 package com.company.classes.characters;
 
 import com.company.classes.AttackType;
+import com.company.classes.BaseClass;
 import com.company.classes.CharacterClass;
 
 public class Warrior extends CharacterClass {
@@ -12,6 +13,7 @@ public class Warrior extends CharacterClass {
         this.setAttackDistance(Constans.CHARACTER_WIDTH);
         this.className = "Warior";
         this.setSteps(Constans.STEPS);
+        this.setAttackType(AttackType.PHYSICAL);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);

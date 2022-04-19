@@ -20,11 +20,6 @@ public class GameField extends JPanel {
         addKeyListener(new FieldKeyListener());
         gameOver.setVisible(false);
         add(gameOver);
-
-
-
-
-
     }
     public void gameOverSign(CharacterClass player) {
         if (player.getHealthPoints() <= 0) {
@@ -43,6 +38,8 @@ public class GameField extends JPanel {
             g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
             g.drawString("steps " + player.getSteps(), player.getX(), player.getY() + 24);
             System.out.println("health points = " + player.getHealthPoints());
+            System.out.println("player 0 " +players[0]);
+            System.out.println("player 1 " +players[1]);
         }
     }
 
@@ -59,29 +56,27 @@ public class GameField extends JPanel {
                 if (key == player.getLeftKey()) {
                     //player.setX(player.getX() - 40);
                     player.left();
-                    player.checkSteps(player);
-                   // player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(players[0], players[1]);
                 }
                 if (key == player.getRightKey()) {
                     //player.setX(player.getX() + 40);
                     player.right();
-                    player.checkSteps(player);
-                    //player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(players[0], players[1]);
                 }
                 if (key == player.getUpKey()) {
                     //player.setY(player.getY() - 40);
                     player.up();
-                    player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(players[0], players[1]);
                 }
                 if (key == player.getDownKey()) {
                     //player.setY(player.getY() + 40);
                     player.down();
-                    player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(players[0], players[1]);
 
                 }
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
-                    player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(players[0], players[1]);
 
                     //timer
                     new java.util.Timer().schedule(
@@ -96,8 +91,8 @@ public class GameField extends JPanel {
                 }
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
-                    player.setSteps(player.getSteps() - 1);
-                    if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()] > 0) {
+                    player.checkSteps(players[0], players[1]);
+                    if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()] > 0 && CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()] <= player.getAttackDistance()) {
                     player.attack(players[CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()]-1]);
                    }
                     new java.util.Timer().schedule(
@@ -112,11 +107,11 @@ public class GameField extends JPanel {
                 }
 
                 if (key == player.getRightAttackKey()) {
-                    player.setSteps(player.getSteps() - 1);
+                    player.checkSteps(players[0], players[1]);
                     player.setAttackRightImage();
 
 
-                    if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constans.CHARACTER_WIDTH][player.getY()] > 0) {
+                    if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constans.CHARACTER_WIDTH][player.getY()] > 0 && CharacterClass.occupiedCells[player.getX() - Constans.CHARACTER_WIDTH][player.getY()] <= player.getAttackDistance()) {
                         player.attack(players[CharacterClass.occupiedCells[player.getX() + Constans.CHARACTER_WIDTH][player.getY()]-1]);
                     }
 

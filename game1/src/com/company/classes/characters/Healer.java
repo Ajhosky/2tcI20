@@ -30,6 +30,10 @@ public class Healer  extends CharacterClass {
         int newPositionX = this.getX() < 320 ?  this.getX() + 40 : 0;
 
     }
+    public void healing(){
+
+    }
+
     public void up() {
         int newPositionY = this.getY() > 80 ?  this.getY() - 80 : 320;
     }
