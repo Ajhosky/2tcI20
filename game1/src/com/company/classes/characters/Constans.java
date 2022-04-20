@@ -8,5 +8,5 @@ public class Constans {
     public static final int WINDOW_WIDTH = 375;
     public static final int WINDOW_HEIGHT = 438;
     public static final int STEPS = 3;
-    public static final String IMG_FOLDER = ""
+    public static final String IMG_FOLDER = "/imgaes/";
 }

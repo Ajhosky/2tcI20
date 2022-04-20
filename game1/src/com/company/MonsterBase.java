@@ -16,4 +16,22 @@ public class MonsterBase {
         this.image = new ImageIcon(baseImage).getImage();
     }
 
+    public Image getImage() {
+        return image;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getHealthPoints() {
+        return health;
+    }
+
+
+
 }

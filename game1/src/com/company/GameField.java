@@ -7,24 +7,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Timer;
 
 public class GameField extends JPanel {
     protected Integer steps;
     private Team team;
     private CharacterClass[] players;
+    private ArrayList<MonsterBase> monsters;
     private  JLabel gameOver = new JLabel("Game over");
     public GameField(Team team) {
         this.team = team;
         this.players = team.getTeamMembers();
+
         setFocusable(true);
         addKeyListener(new FieldKeyListener());
+
         gameOver.setVisible(false);
         add(gameOver);
 
-        java.util.Timer timer = new Timer();
-        MonstersFactory monstersFactory = new MonstersFactory();
-        timer.schedule(MonstersFactory,0,2000);
+        Timer timer = new Timer();
+        MonstersFactory monstersFactory = new MonstersFactory(this);
+        timer.schedule(monstersFactory,0,2000);
     }
 
     public void gameOverSign(CharacterClass player) {
@@ -44,6 +48,11 @@ public class GameField extends JPanel {
             System.out.println("health points = " + player.getHealthPoints());
             System.out.println("player 0 " +players[0]);
             System.out.println("player 1 " +players[1]);
+        }
+        for (MonsterBase monster : monsters) {
+            g.drawImage(monster.getImage(), monster.getX(), monster.getY(), this);
+            g.drawString("" + monster.getHealthPoints(), monster.getX(), monster.getY() + 12);
+            g.drawString("tresc", monster.getX(), monster.getY() + 24);
         }
     }
 
