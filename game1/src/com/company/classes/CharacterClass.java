@@ -130,15 +130,17 @@ public abstract class CharacterClass implements BaseClass {
     public void setSteps(int steps) {
         this.steps = steps;
     }
-    public void checkSteps(CharacterClass player1, CharacterClass player2){
-        player1.setSteps(player1.getSteps() - 1);
-        if (player2.getSteps() == 0 ){
-            player1.setSteps(3);
+    public void checkSteps(CharacterClass player,CharacterClass player1, CharacterClass player2){
+
+        if (player2.getSteps() == 0 ) player1.setSteps(3);
+        else {
+            player.setSteps(player.getSteps() - 1);
         }
-        player2.setSteps(player2.getSteps() - 1);
-        if (player1.getSteps() == 0 ){
+        if ((player1.getSteps() <= 0)) {
             player2.setSteps(3);
         }
+
+
     }
 
   public void checkGameOver(CharacterClass player){

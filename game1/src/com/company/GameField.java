@@ -23,7 +23,8 @@ public class GameField extends JPanel {
         add(gameOver);
 
         java.util.Timer timer = new Timer();
-
+        MonstersFactory monstersFactory = new MonstersFactory();
+        timer.schedule(MonstersFactory,0,2000);
     }
 
     public void gameOverSign(CharacterClass player) {

@@ -11,7 +11,7 @@ public class Archer  extends CharacterClass {
         this.setMaxHealthPoints(1000);
         setHealthPoints(500);
         this.className = "Archer";
-        this.setSteps(Constans.STEPS);
+        this.setSteps(0);
         this.setAttackType(AttackType.PHYSICAL_RANGED);
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
@@ -21,7 +21,6 @@ public class Archer  extends CharacterClass {
         this.setAttackType(AttackType.PHYSICAL);
         this.setAttackAmount(5);
         this.setName(name);*/
-
         /*this.setX(300);
         this.setY(300);*/
         this.uploadImage("5.png", "7.png", "6.png", "gameOver.png");
